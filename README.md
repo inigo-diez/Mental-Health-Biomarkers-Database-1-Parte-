@@ -1,6 +1,6 @@
 # Mental-Health Metabolite Collector
 
-> **[Click here](https://inigo-diez.github.io/Mental-Health-Biomarkers-Database/report_mhb.html)** — Interactive dashboard with all ~39,000 entries. Filter by condition, source, origin and microbiota link. No installation required, open directly in browser.
+> **[Live Demo](https://inigo-diez.github.io/Mental-Health-Biomarkers-Database/report_mhb.html)** — Interactive dashboard with all ~39,000 entries. Filter by condition, source, origin and microbiota link. No installation required, open directly in browser.
 
 Automated pipeline that aggregates **metabolite biomarker candidates** for psychiatric conditions
 (schizophrenia, depression, bipolar disorder, anxiety, PTSD, autism, ADHD) from
@@ -17,7 +17,7 @@ Built as part of a Final Degree Project (TFG) in Biomedical Sciences.
 - Optional **PubChem enrichment** to resolve identifiers (CID + InChIKey)
 - **Volatility annotation** — VOC vs non-volatile compounds, inferred from analytical method hints (GC vs LC)
 - **Gut-microbiota link classification** — SCFAs, indoles, phenols, biogenic amines, sulfur compounds
-- **Interactive HTML dashboard** (DataTables) with per-condition filters, source filters, origin confidence levels, and one-click CSV/Excel export
+- **Interactive HTML dashboard** (DataTables) with per-condition filters, source filters, origin confidence levels, **Motivo_origen filter** (18 categories, stacked below Confianza Origen), and one-click CSV/Excel export
 - Included curated dataset: `outputs/MH_Biomarkers_Salud_Mental_CURADO.xlsx` — **38 952 entries**, manually reviewed and annotated
 
 ---
@@ -127,7 +127,7 @@ python -m src.search "butyrate" --top 20
 | `Origen_probable` | Most likely biological origin |
 | `Origen_alternativos` | Alternative origin hypotheses |
 | `Confianza_origen` | Origin confidence: `Alta` / `Media` / `Baja` |
-| `Motivo_origen` | Free-text rationale for origin assignment |
+| `Motivo_origen` | Rationale for origin assignment (18 categories: *heurística metabolito*, *firma microbiana*, *aminoácido*, etc.) — visible in dashboard, filterable via Motivo Origen panel |
 
 ---
 
