@@ -1,0 +1,52 @@
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+
+# ── Testing ───────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── Logs ──────────────────────────────────────────────────────
+logs/
+*.log
+
+# ── Cache (HTTP + large downloads, auto-regenerated) ──────────
+cache/
+
+# ── Generated outputs (too large or reproducible) ─────────────
+outputs/metabolites.db
+outputs/*.html
+outputs/candidates_master.csv
+outputs/candidates_master_new.csv
+outputs/fecal_mental_candidates.csv
+outputs/mh_biomarkers.csv
+outputs/source_summary.csv
+outputs/source_summary_new.csv
+
+# ── Dev / debug scripts ───────────────────────────────────────
+check*.py
+inspect_script.py
+
+# ── IDE / OS ──────────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Secrets ───────────────────────────────────────────────────
+.env
+*.env
+secrets.yaml

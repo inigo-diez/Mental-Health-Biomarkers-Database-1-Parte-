@@ -1,0 +1,17 @@
+# Metabolite Collector — Python dependencies
+# Install: pip install -r requirements.txt
+
+# HTTP
+requests>=2.31.0
+
+# Config
+PyYAML>=6.0
+
+# Excel I/O (curated dataset + report generation)
+openpyxl>=3.1.0
+
+# Progress (optional, used in collect.py)
+# tqdm>=4.66.0   # uncomment if you want progress bars
+
+# Dev / testing
+pytest>=8.0.0

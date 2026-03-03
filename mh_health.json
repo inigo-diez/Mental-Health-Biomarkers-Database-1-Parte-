@@ -1,0 +1,21 @@
+{
+  "MetaboLights_MH": {
+    "studies_found": 157,
+    "studies_mh": 38,
+    "files_parsed": 73,
+    "metabolites_extracted": 61455,
+    "last_error": ""
+  },
+  "MWB_MH": {
+    "studies_found": 22,
+    "studies_mh": 19,
+    "metabolites_extracted": 3599,
+    "last_error": ""
+  },
+  "TextMining_MH": {
+    "papers_found": 388,
+    "chemicals_extracted": 10021,
+    "dataset_ids_detected": [],
+    "last_error": ""
+  }
+}

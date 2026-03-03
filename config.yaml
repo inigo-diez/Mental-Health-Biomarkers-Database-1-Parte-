@@ -1,0 +1,116 @@
+# ============================================================
+#  Metabolite Collector — Configuration
+# ============================================================
+
+paths:
+  db:      "outputs/metabolites.db"
+  outputs: "outputs"
+  cache:   "cache"
+  logs:    "logs/collector.log"
+  papers_local: "papers_local"   # drop PDFs/TSVs here for local parsing
+
+# ── Keywords ────────────────────────────────────────────────
+mental_health_keywords:
+  - schizophrenia
+  - psychosis
+  - bipolar
+  - depression
+  - "major depressive disorder"
+  - MDD
+  - anxiety
+  - PTSD
+  - autism
+  - ASD
+  - ADHD
+  - "attention deficit"
+  - "mental disorder"
+  - "psychiatric disorder"
+  - "mental health"
+  - "mood disorder"
+
+schizophrenia_keywords:
+  - schizophrenia
+  - psychosis
+  - "first episode psychosis"
+  - schizoaffective
+
+# ── Rate limiting & retries ──────────────────────────────────
+rate_limit: 3          # requests per second (global)
+retry_max:  5
+retry_backoff: 2.0     # exponential base (seconds)
+request_timeout: 30    # seconds per request
+
+# ── Per-source limits (set null for unlimited) ──────────────
+max_records_per_source:
+  markerdb:             null
+  ctd:                  null
+  metabolomics_workbench: 200    # max studies
+  metabolights:         100      # max studies
+  europe_pmc:           500      # max articles
+  pubtator:             300      # max PMIDs per query
+
+# ── Optional integrations ────────────────────────────────────
+use_pubchem: true       # resolve CID + InChIKey via PUG-REST (slow, cached)
+pubchem_rate: 5         # req/s (NCBI allows 5/s with API key, 3/s without)
+pubchem_api_key: null   # set or use env var PUBCHEM_API_KEY
+
+# MarkerDB — API key optional (set or use env var MARKERDB_API_KEY)
+markerdb_api_key: null
+
+# ── Sources toggle ───────────────────────────────────────────
+sources:
+  markerdb:               true
+  ctd:                    true
+  metabolomics_workbench: true
+  metabolights:           true
+  europe_pmc:             true
+  hmdb_feces:             true   # uses local XML if present, else skips
+  pubtator:               true   # NCBI PubTator3 text mining
+  local_papers:           true   # parse anything in papers_local/
+
+# ── CTD download URL (public, no auth needed) ───────────────
+ctd:
+  url: "https://ctdbase.org/reports/CTD_chemicals_diseases.tsv.gz"
+  local_cache: "cache/CTD_chemicals_diseases.tsv.gz"
+
+# ── MarkerDB ─────────────────────────────────────────────────
+# Confirmed URLs from https://markerdb.ca/downloads (updated 2024-09-12)
+markerdb:
+  download_urls:
+    - "https://markerdb.ca/pages/download_all_chemicals?format=tsv"
+    - "https://markerdb.ca/pages/download_all_diagnostic_chemicals?format=tsv"
+    - "https://markerdb.ca/pages/download_all_exposure_chemicals?format=tsv"
+  download_url_xml: "https://markerdb.ca/pages/download_all_chemicals?format=xml"
+  api_base: "https://markerdb.ca/api/v2"
+
+# ── Metabolomics Workbench ───────────────────────────────────
+metabolomics_workbench:
+  rest_base: "https://www.metabolomicsworkbench.org/rest"
+
+# ── MetaboLights ─────────────────────────────────────────────
+metabolights:
+  rest_base: "https://www.ebi.ac.uk/metabolights/ws"
+  public_studies_url: "https://www.ebi.ac.uk/metabolights/ws/studies/list"
+
+# ── Europe PMC ───────────────────────────────────────────────
+europe_pmc:
+  search_base: "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
+  annotations_base: "https://www.ebi.ac.uk/europepmc/annotations_api/annotationsByArticleIds"
+  page_size: 100
+
+# ── PubTator3 (NCBI text mining) ─────────────────────────────
+pubtator:
+  base_url: "https://www.ncbi.nlm.nih.gov/research/pubtator3-api"
+
+# ── Fecal + Mental-health mode settings ──────────────────────
+fecal_mental:
+  max_studies_per_term: 50       # per MWB/MetaboLights keyword
+  max_total_studies: 400         # across all keywords combined
+  max_papers_text_mining: 500    # PubTator + EuropePMC combined
+  rate_limit_rps: 3
+  cache_enabled: true
+
+# ── HMDB feces ───────────────────────────────────────────────
+hmdb:
+  feces_xml_path: "cache/hmdb_metabolites_feces.xml"   # download manually from HMDB
+  feces_download_hint: "https://hmdb.ca/system/downloads/current/hmdb_metabolites.zip"
