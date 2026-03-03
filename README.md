@@ -6,6 +6,8 @@ Automated pipeline that aggregates **metabolite biomarker candidates** for psych
 
 Built as part of a Final Degree Project in Chemistry.
 
+**[Live Demo](https://inigo-diez.github.io/Mental-Health-Biomarkers-Database/report_mhb.html)** — Interactive dashboard with all ~39,000 entries. Filter by condition, source, origin and microbiota link. No installation required, open directly in browser.
+
 ---
 
 ## Highlights
@@ -208,4 +210,5 @@ pytest tests/ -v
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
 
