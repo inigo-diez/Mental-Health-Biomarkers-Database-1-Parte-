@@ -1,6 +1,6 @@
 # Mental-Health Metabolite Collector
 
-> **[Click here](https://htmlpreview.github.io/?https://github.com/inigo-diez/Mental-Health-Biomarkers-Database/blob/main/report_mhb.html)** para ver el reporte interactivo — Interactive dashboard with all ~39,000 entries. Filter by condition, source, origin and microbiota link. No installation required, open directly in browser.
+> **[Ver Reporte Interactivo](https://inigo-diez.github.io/Mental-Health-Biomarkers-Database-1-Parte-/report_mhb.html)** — Interactive dashboard with all ~39,000 entries. Filter by condition, source, origin and microbiota link. No installation required, open directly in browser.
 
 Automated pipeline that aggregates **metabolite biomarker candidates** for psychiatric conditions
 (schizophrenia, depression, bipolar disorder, anxiety, PTSD, autism, ADHD) from
